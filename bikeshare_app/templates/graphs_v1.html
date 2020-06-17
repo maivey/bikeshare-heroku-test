@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>UFO Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="static/css/style.css"> -->
+  <style>
+    .result_paragraph p {
+      font-size:18pt;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">Bikeshare Data
+            <img class="nav-ufo">
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="hero text-center">
+      <h1>Let's explore some US bikeshare data! GRAPHS PAGE</h1>
+      <!-- <p>Let\'s explore some US bikeshare data!</p> -->
+    </div>
+    <div class="container">
+      <div class="row margin-top-50">
+        <div class="col-md-12">
+        <!-- <div class="col-md-2"> -->
+          <aside class="filters">
+            <div class="panel panel-default">
+              <div class="panel-heading">Filter Search</div>
+              <div class="panel-body">
+                <form action = "{{ url_for('main') }}" method="POST">
+                  <form action="{{ url_for('main') }}" method="POST">
+                  <div class="form-group">
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label for="my_city">Would you like to see data for Chicago, New York City, or Washington?</label>
+                        <!-- <select name = 'my_city' id="datetime" -->
+                        <input name = "my_city" class="form-control" id="datetime" type="text" placeholder="Chicago" >
+                      </li>
+                    </ul>
+                  <!-- </div> -->
+                  <div class="form-group">
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label for="month_day">Would you like to filter the data by month, day, both, or not at all? Type 'none' for no time filter.</label>
+                        <input name = "month_day" class="form-control" id="city" type="text" placeholder="Both" >
+                      </li>
+                    </ul>
+                  <!-- </div> -->
+                  <div id = 'month'>
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label id = 'label_month' for="state">IF YOU CHOSE MONTH-- Which month - January, February, March, April, May, or June?</label>
+                        <input name = "month" class="form-control" id="state" type="text" placeholder="April">
+                      </li>
+                    </ul>
+                  </div>
+                  <div id = 'day'>
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label id = 'label_day' for="country">IF YOU CHOSE DAY-- Which day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday?</label>
+                        <input name = "day" class="form-control" id="country" type="text" placeholder="Tuesday">
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- <div id = 'graphs'>
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label id = 'graphs' for="graphs">Would you like to see visualizations of the data?</label>
+                        <input name = "graphs" class="form-control" id="graphs" type="text" placeholder="Yes">
+                      </li>
+                    </ul> -->
+                  </div>
+                  </div>
+                  <button id="filter-btn" type="submit" class="btn btn-default" name = "btn" value = "stats">Get Statistics</button>
+                  <button id="filter-btn" type="submit" class="btn btn-default" name = "btn" value = "graphs">Show Graphs</button>
+                </form>
+              </div>
+            </div>
+          </aside>
+          
+        </div>
+ 
+        <!-- Statistics -->
+        <div class="col-md-12 result_paragraph container">
+          <!-- <div class="col-md-12">
+            <div id="bar"></div>
+          </div> -->
+          <div class="col-md-12">
+            <!-- <h4>Calculating The Most Frequent Times of Travel...</h4> -->
+            <h2 id = "mainFilter" class='text-info'>Your filter : {{ myFilter }}</h2>
+            <h2 style = "text-transform: capitalize;" id = "mainCity" class='text-info'>Your city : {{ myCity }} </h2>
+            <h2 style = "text-transform: capitalize;" id = "mainMonth" class='text-info'>Your month : {{ myMonth }}</h2>
+            <h2 style = "text-transform: capitalize;" id = "mainDay" class='text-info'>Your day : {{ myDay }}</h2>
+            <!-- <h3>Calculating The Most Frequent Times of Travel...</h3> -->
+            <!-- ==============================  -->
+             <!-- ==============================  -->
+            <!-- IF CITY IS NYC OR CHICAGO --> 
+            {% if myCity == 'new york city' or myCity=='chicago' %}
+            <p>
+              {% if myFilter == 'Both' %}
+              <h2 class='text-info'>Statistics:</h2>
+              <!-- Travel -->
+              <h3 class='text-info'> The Most Frequent Times of Travel...</h3>
+
+                <p id='result_paragraph'>Most common start hour : {{ most_common_hour_str }} 
+                <br>Count : {{ hour_count }}
+                </p>
+                <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_hour"></div>
+                    </div>
+              <br>
+              <!-- Popular Stations -->
+              <h3 class='text-info'> The Most Popular Stations and Trip...</h3>
+                <p>Most commonly used Start Station : {{ common_start }}
+                  <br>Count : {{ freq_start }}
+                </p>
+                <div style = 'padding-bottom:20px' class="col-md-12">
+                  <div id="bar_startStation"></div>
+                </div>
+                <p>Most commonly used End Station : {{ common_end }}
+                  <br>Count : {{ freq_end }}
+                </p>
+                <div style = 'padding-bottom:20px' class="col-md-12">
+                  <div id="bar_endStation"></div>
+                </div>
+                <p>Most frequent combination of start and end station : {{ combo_names }}
+                  <br>Count : {{ combo_count }}
+                </p>
+                <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startEndStation"></div>
+                    </div>
+                <!-- Trip Duration -->
+                <br>
+              <h3 class='text-info'> Trip Duration...</h3>
+              <p id = "tripSum">Total Duration : {{ total_trip_duration }}
+                <br>Count : {{ count_trip_duration }}
+                <br>Avg Duration : {{ average_trip_duration }}
+              </p>
+              <!-- USER STATS -->
+              <br>
+              <h3 class='text-info'> User Statistics...</h3>
+              <!-- TYPES -->
+              <br>
+              <h4 class='text-info'> User Types...</h4>
+              <p id='userTypes'>{{ subs }} : {{ sub_count }}
+                <br>{{ users }} : {{ user_count }}
+              </p>
+              <div style = 'padding-bottom:20px' class="col-md-12">
+                <div id="bar_userTypes"></div>
+              </div>
+              <!-- Gender -->
+              <br>
+              <h4 class='text-info'> Gender...</h4>
+              <p id ="genders">{{ m }} : {{ m_count }}
+                <br>{{ f }} : {{ f_count }}
+              </p>
+              <div style = 'padding-bottom:20px' class="col-md-12">
+                <div id="bar_gender"></div>
+              </div>
+              <!-- Birth Year -->
+              <br>
+              <h4 class='text-info'> Birth Year...</h4>
+              <p>Earliest birth year : {{ earliest_birth }}
+                <br> Count : {{earliest_count}}
+                <br>
+                <br> Most recent birth year : {{ recent_birth }}
+                <br> Count : {{recent_count}}
+                <br>
+                <br> Most common birth year : {{ common }}
+                <br> Count : {{ freq }}
+              </p>
+              <div style = 'padding-bottom:20px' class="col-md-12">
+                <div id="bar_birth"></div>
+              </div>
+
+                
+              {% elif myFilter == 'Month' %}
+              <h2 class='text-info'>Statistics:</h2>
+              <!-- Travel -->
+              <h3 class='text-info'> The Most Frequent Times of Travel..</h3>
+                  <p>Most common day : {{ most_common_day }} 
+                  <br>Count : {{ day_count }}
+                  </p>
+                  <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div id="bar_day"></div>
+                  </div>
+                  <br>
+                  <p>Most common start hour : {{ most_common_hour_str }}
+                    <br>Count : {{ hour_count }}
+                  </p>
+                  <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_hour"></div>
+                    </div>
+                  <br>
+              <!-- Popular Stations -->
+              <h3 class='text-info'> The Most Popular Stations and Trip...</h3>
+                <p>Most commonly used Start Station : {{common_start}}
+                  <br>Count : {{freq_start}}
+                </p>
+                <div style = 'padding-bottom:20px' class="col-md-12">
+                  <div id="bar_startStation"></div>
+                </div>
+                <p>Most commonly used End Station : {{common_end}}
+                  <br>Count : {{freq_end}}
+                </p>
+                <div style = 'padding-bottom:20px' class="col-md-12">
+                  <div id="bar_endStation"></div>
+                </div>
+                <p>Most frequent combination of start and end station : {{combo_names}}
+                  <br>Count : {{combo_count}}
+                </p>
+                <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startEndStation"></div>
+                    </div>
+                <br>
+                <!-- Trip Duration -->
+                <h3> Trip Duration...</h3>
+                <p id = "tripSum">Total Duration : {{ total_trip_duration }}
+                  <br>Count : {{ count_trip_duration }}
+                  <br>Avg Duration : {{ average_trip_duration }}
+                </p>
+                <br>
+              <h3 class='text-info'> User Statistics...</h3>
+              <!-- TYPES -->
+              <br>
+              <h4 class='text-info'> User Types...</h4>
+              <p id='userTypes'>{{ subs }} : {{ sub_count }}
+                <br>{{ users }} : {{ user_count }}
+              </p>
+              <div style = 'padding-bottom:20px' class="col-md-12">
+                <div id="bar_userTypes"></div>
+              </div>
+              <!-- Gender -->
+              <br>
+              <h4 class='text-info'> Gender...</h4>
+              <p id ="genders">{{ m }} : {{ m_count }}
+                <br>{{ f }} : {{ f_count }}
+              </p>
+              <div style = 'padding-bottom:20px' class="col-md-12">
+                <div id="bar_gender"></div>
+              </div>
+              <!-- Birth Year -->
+              <br>
+              <h4 class='text-info'> Birth Year...</h4>
+              <p>Earliest birth year : {{ earliest_birth }}
+                <br> Count : {{earliest_count}}
+                <br>
+                <br> Most recent birth year : {{ recent_birth }}
+                <br> Count : {{recent_count}}
+                <br>
+                <br> Most common birth year : {{ common }}
+                <br> Count : {{ freq }}
+              </p>
+              <div style = 'padding-bottom:20px' class="col-md-12">
+                <div id="bar_birth"></div>
+              </div>
+              
+              {% elif myFilter == 'Day' %}
+              <h2 class='text-info'>Statistics:</h2>
+              <!-- Travel -->
+              <h3 class='text-info'> The Most Frequent Times of Travel...</h3>
+                  <p>Most common month : {{ most_common_month }}
+                  <br>Count : {{ month_count }}
+                  </p>
+                  <div style = 'padding-bottom:20px'class="col-md-12">
+                    <div id="bar_month"></div>
+                  </div>
+                  <br>
+                  <p>Most common start hour : {{ most_common_hour_str }},
+                    <br>Count : {{ hour_count }} 
+                  </p>
+                  <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_hour"></div>
+                    </div>
+                  <br>
+                  <!-- Popular Stations -->
+                  <h3 class='text-info'> The Most Popular Stations and Trip...</h3>
+                    <p>Most commonly used Start Station : {{ common_start }}
+                      <br>Count : {{ freq_start }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startStation"></div>
+                    </div>
+                    <p>Most commonly used End Station : {{ common_end }}
+                      <br>Count : {{ freq_end }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_endStation"></div>
+                    </div>
+                    <p>Most frequent combination of start and end station : {{ combo_names }}
+                      <br> Count : {{ combo_count }}
+                    </p>
+                    <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startEndStation"></div>
+                    </div>
+                    <br>
+                  <!-- Trip Duration -->
+                  <h3 class='text-info'> Trip Duration...</h3>
+                    <p id = "tripSum">Total Duration : {{ total_trip_duration }}
+                      <br>Count : {{ count_trip_duration }}
+                      <br>Avg Duration : {{ average_trip_duration }}
+                    </p>
+                    <br>
+                <h3 class='text-info'> User Statistics...</h3>
+                <!-- TYPES -->
+              <br>
+              <h4 class='text-info'> User Types...</h4>
+              <p id='userTypes'>{{ subs }} : {{ sub_count }}
+                <br>{{ users }} : {{ user_count }}
+              </p>
+              <div style = 'padding-bottom:20px' class="col-md-12">
+                <div id="bar_userTypes"></div>
+              </div>
+                <!-- Gender -->
+                <br>
+                <h4 class='text-info'> Gender...</h4>
+                <p id ="genders">{{ m }} : {{ m_count }}
+                  <br>{{ f }} : {{ f_count }}
+                </p>
+                <div style = 'padding-bottom:20px' class="col-md-12">
+                  <div id="bar_gender"></div>
+                </div>
+                <!-- Birth Year -->
+                <br>
+                <h4 class='text-info'> Birth Year...</h4>
+                <p>Earliest birth year : {{ earliest_birth }}
+                  <br> Count : {{earliest_count}}
+                  <br>
+                  <br> Most recent birth year : {{ recent_birth }}
+                  <br> Count : {{recent_count}}
+                  <br>
+                  <br> Most common birth year : {{ common }}
+                  <br> Count : {{ freq }}
+                </p>
+                <div style = 'padding-bottom:20px' class="col-md-12">
+                  <div id="bar_birth"></div>
+                </div>
+              {% elif myFilter == 'None' %}
+              <h2 class='text-info'>Statistics:</h2>
+              <!-- Travel -->
+              <h3 class='text-info'> The Most Frequent Times of Travel...</h3>
+                    <p>Most common month : {{ most_common_month }} 
+                    <br>Count : {{ month_count }}
+                    </p>
+                    <div style = 'padding-bottom:20px'class="col-md-12">
+                      <div id="bar_month"></div>
+                    </div>
+                    <br>
+                    <!-- <div style = 'margin-top:20px'></div> -->
+                    
+                    <p>Most common day : {{ most_common_day }}
+                      <br>Count : {{ day_count }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_day"></div>
+                    </div>
+                    <br>
+                    <p>Most common start hour : {{ most_common_hour_str }}
+                      <br>Count : {{ hour_count }}
+                    </p>
+                    <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_hour"></div>
+                    </div>
+                    <br>
+                <!-- Popular Stations-->
+                <h3 class='text-info'> The Most Popular Stations and Trip...</h3>
+                    <p>Most commonly used Start Station : {{ common_start }}
+                      <br>Count : {{ freq_start }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startStation"></div>
+                    </div>
+                    <p>Most commonly used End Station : {{ common_end }}
+                      <br>Count : {{ freq_end }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_endStation"></div>
+                    </div>
+                    <p>Most frequent combination of start and end station : {{ combo_names }}
+                      <br>Count : {{ combo_count }}
+                    </p>
+                    <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startEndStation"></div>
+                    </div>
+                  <!-- Trip Duration -->
+                  <h3 class='text-info'> Trip Duration...</h3>
+                    <p id = "tripSum">Total Duration : {{ total_trip_duration }}
+                      <br>Count : {{ count_trip_duration }}
+                      <br>Avg Duration : {{ average_trip_duration }}
+                    </p>
+                    <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_tripTotal"></div>
+                    </div>
+                <h3 class='text-info'> User Statistics...</h3>
+                  <!-- TYPES -->
+                    <br>
+                    <h4 class='text-info'> User Types...</h4>
+                    <p id='userTypes'>{{ subs }} : {{ sub_count }}
+                      <br>{{ users }} : {{ user_count }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_userTypes"></div>
+                    </div>
+                    
+                    <!-- Gender -->
+                    <br>
+                    <h4 class='text-info'> Gender...</h4>
+                    <p id ="genders">{{ m }} : {{ m_count }}
+                      <br>{{ f }} : {{ f_count }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_gender"></div>
+                    </div>
+                    <!-- Birth Year -->
+                    <br>
+                    <h4 class='text-info'> Birth Year...</h4>
+                    <p>Earliest birth year : {{ earliest_birth }}
+                      <br> Count : {{earliest_count}}
+                      <br>
+                      <br> Most recent birth year : {{ recent_birth }}
+                      <br> Count : {{recent_count}}
+                      <br>
+                      <br> Most common birth year : {{ common }}
+                      <br> Count : {{ freq }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_birth"></div>
+                    </div>
+                    </p>
+
+              {% endif %}
+            <!-- ==============================  -->
+             <!-- ==============================  -->
+             <!-- IF CITY IS WASHINGTON --> 
+            {% elif myCity == 'washington' %}
+                <p>
+                  {% if myFilter == 'Both' %}
+                  <h2 class='text-info'>Statistics:</h2>
+                  <!-- Travel -->
+                  <h3 class='text-info'> The Most Frequent Times of Travel...</h3>
+
+                    <p id='result_paragraph'>Most common start hour : {{ most_common_hour_str }} 
+                    <br>Count : {{ hour_count }}
+                    </p>
+                    <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_hour"></div>
+                    </div>
+                  <br>
+                  <!-- Popular Stations -->
+                  <h3 class='text-info'> The Most Popular Stations and Trip...</h3>
+                    <p>Most commonly used Start Station : {{ common_start }}
+                      <br>Count : {{ freq_start }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startStation"></div>
+                    </div>
+                    <p>Most commonly used End Station : {{ common_end }}
+                      <br>Count : {{ freq_end }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_endStation"></div>
+                    </div>
+                    <p>Most frequent combination of start and end station : {{ combo_names }}
+                      <br>Count : {{ combo_count }}
+                    </p>
+                    <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startEndStation"></div>
+                    </div>
+                    <!-- Trip Duration -->
+                    <br>
+                  <h3 class='text-info'> Trip Duration...</h3>
+                  <p id = "tripSum">Total Duration : {{ total_trip_duration }}
+                    <br>Count : {{ count_trip_duration }}
+                    <br>Avg Duration : {{ average_trip_duration }}
+                  </p>
+                  <br>
+                  <h3 class='text-info'> User Statistics...</h3>
+                  <!-- TYPES -->
+                  <br>
+                  <h4 class='text-info'> User Types...</h4>
+                  <p>{{ subs }} : {{ sub_count }}
+                    <br>{{ users }} : {{ user_count }}
+                  </p>
+                  <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div id="bar_userTypes"></div>
+                  </div>
+
+                    
+                  {% elif myFilter == 'Month' %}
+                  <h2 class='text-info'>Statistics:</h2>
+                  <!-- Travel -->
+                  <h3 class='text-info'> The Most Frequent Times of Travel..</h3>
+                      <p>Most common day : {{ most_common_day }} 
+                      <br>Count : {{ day_count }}
+                      </p>
+                      <div style = 'padding-bottom:20px' class="col-md-12">
+                        <div id="bar_day"></div>
+                      </div>
+                      <br>
+                      <p>Most common start hour : {{ most_common_hour_str }}
+                        <br>Count : {{ hour_count }}
+                      </p>
+                      <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_hour"></div>
+                    </div>
+                      <br>
+                  <!-- Popular Stations -->
+                  <h3 class='text-info'> The Most Popular Stations and Trip...</h3>
+                    <p>Most commonly used Start Station : {{common_start}}
+                      <br>Count : {{freq_start}}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startStation"></div>
+                    </div>
+                    <p>Most commonly used End Station : {{common_end}}
+                      <br>Count : {{freq_end}}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_endStation"></div>
+                    </div>
+                    <p>Most frequent combination of start and end station : {{combo_names}}
+                      <br>Count : {{combo_count}}
+                    </p>
+                    <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startEndStation"></div>
+                    </div>
+                    <br>
+                    <!-- Trip Duration -->
+                    <h3> Trip Duration...</h3>
+                    <p id = "tripSum">Total Duration : {{ total_trip_duration }}
+                      <br>Count : {{ count_trip_duration }}
+                      <br>Avg Duration : {{ average_trip_duration }}
+                    </p>
+                    <h3 class='text-info'> User Statistics...</h3>
+                    <!-- TYPES -->
+                    <br>
+                    <h4 class='text-info'> User Types...</h4>
+                    <p id='userTypes'>{{ subs }} : {{ sub_count }}
+                      <br>{{ users }} : {{ user_count }}
+                    </p>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_userTypes"></div>
+                    </div>
+                  
+                  {% elif myFilter == 'Day' %}
+                  <h2 class='text-info'>Statistics:</h2>
+                  <!-- Travel -->
+                  <h3 class='text-info'> The Most Frequent Times of Travel...</h3>
+                      <p>Most common month : {{ most_common_month }}
+                      <br>Count : {{ month_count }}
+                      </p>
+                      <div style = 'padding-bottom:20px'class="col-md-12">
+                        <div id="bar_month"></div>
+                      </div>
+                      <br>
+                      <p>Most common start hour : {{ most_common_hour_str }},
+                        <br>Count : {{ hour_count }} 
+                      </p>
+                      <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_hour"></div>
+                    </div>
+                      <br>
+                      <!-- Popular Stations -->
+                      <h3 class='text-info'> The Most Popular Stations and Trip...</h3>
+                        <p>Most commonly used Start Station : {{ common_start }}
+                          <br>Count : {{ freq_start }}
+                        </p>
+                        <div style = 'padding-bottom:20px' class="col-md-12">
+                          <div id="bar_startStation"></div>
+                        </div>
+                        <p>Most commonly used End Station : {{ common_end }}
+                          <br>Count : {{ freq_end }}
+                        </p>
+                        <div style = 'padding-bottom:20px' class="col-md-12">
+                          <div id="bar_endStation"></div>
+                        </div>
+                        <p>Most frequent combination of start and end station : {{ combo_names }}
+                          <br> Count : {{ combo_count }}
+                        </p>
+                        <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startEndStation"></div>
+                    </div>
+                        <br>
+                      <!-- Trip Duration -->
+                      <h3 class='text-info'> Trip Duration...</h3>
+                        <p id ="tripSum">Total Duration : {{ total_trip_duration }}
+                          <br>Count : {{ count_trip_duration }}
+                          <br>Avg Duration : {{ average_trip_duration }}
+                        </p>
+                        <br>
+                    <h3 class='text-info'> User Statistics...</h3>
+                    <!-- TYPES -->
+                      <br>
+                      <h4 class='text-info'> User Types...</h4>
+                      <p id='userTypes'>{{ subs }} : {{ sub_count }}
+                        <br>{{ users }} : {{ user_count }}
+                      </p>
+                      <div style = 'padding-bottom:20px' class="col-md-12">
+                        <div id="bar_userTypes"></div>
+                      </div>
+                  {% elif myFilter == 'None' %}
+                  <h2 class='text-info'>Statistics:</h2>
+                  <!-- Travel -->
+                  <h3 class='text-info'> The Most Frequent Times of Travel...</h3>
+                        <p>Most common month : {{ most_common_month }} 
+                        <br>Count : {{ month_count }}
+                        </p>
+                        <div style = 'padding-bottom:20px'class="col-md-12">
+                          <div id="bar_month"></div>
+                        </div>
+                        <br>
+                        <p>Most common day : {{ most_common_day }}
+                          <br>Count : {{ day_count }}
+                        </p>
+                        <div style = 'padding-bottom:20px' class="col-md-12">
+                          <div id="bar_day"></div>
+                        </div>
+                        <br>
+                        <p>Most common start hour : {{ most_common_hour_str }}
+                          <br>Count : {{ hour_count }}
+                        </p>
+                        <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_hour"></div>
+                    </div>
+                        <br>
+                    <!-- Popular Stations -->
+                    <h3 class='text-info'> The Most Popular Stations and Trip...</h3>
+                        <p>Most commonly used Start Station : {{ common_start }}
+                          <br>Count : {{ freq_start }}
+                        </p>
+                        <div style = 'padding-bottom:20px' class="col-md-12">
+                          <div id="bar_startStation"></div>
+                        </div>
+                        <p>Most commonly used End Station : {{ common_end }}
+                          <br>Count : {{ freq_end }}
+                        </p>
+                        <div style = 'padding-bottom:20px' class="col-md-12">
+                          <div id="bar_endStation"></div>
+                        </div>
+                        <p>Most frequent combination of start and end station : {{ combo_names }}
+                          <br>Count : {{ combo_count }}
+                        </p>
+                        <br>
+                    <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div id="bar_startEndStation"></div>
+                    </div>
+                        <br>
+                      <!-- Trip Duration -->
+                      <h3 class='text-info'> Trip Duration...</h3>
+                        <p id = "tripSum">Total Duration : {{ total_trip_duration }}
+                          <br>Count : {{ count_trip_duration }}
+                          <br>Avg Duration : {{ average_trip_duration }}
+                        </p>
+                        <br>
+                    <h3 class='text-info'> User Statistics...</h3>
+                        <!-- TYPES -->
+                        <br>
+                        <h4 class='text-info'> User Types...</h4>
+                        <p id='userTypes'>{{ subs }} : {{ sub_count }}
+                          <br>{{ users }} : {{ user_count }}
+                        </p>
+                        <div style = 'padding-bottom:20px' class="col-md-12">
+                          <div id="bar_userTypes"></div>
+                        </div>
+
+                  {% endif %}
+                    </p>
+            {% endif %}
+            </p>
+            <!-- <h2 class='text-info'><strong>Prediction : {{ main_predict }}</strong></h2> -->
+
+
+          </div>
+
+
+        </div><!-- Ends Statistics -->
+
+        
+    <footer class="footer">
+      <span class="bottom">Bikeshare Data</span>
+    </footer>
+  </div>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- <script src="static/js/data.js"></script> -->
+  <!-- <script src="static/js/app.js"></script> -->
+  <script>
+      var filter = d3.select('#mainFilter').text().slice(14,30).trim()
+        var city = d3.select('#mainCity').text().slice(12,30).trim()
+        var month = d3.select('#mainMonth').text().slice(13,30).trim()
+        var day = d3.select('#mainDay').text().slice(11,30).trim()
+        console.log(filter)
+        console.log(city)
+        console.log(month)
+        console.log(day)
+        var CITY_DATA = { 'chicago': '/outputData/chicago_filtered.csv',
+        'new york city': '/outputData/nyc_filtered.csv',
+        'washington': '/outputData/washington_filtered.csv' }
+        // console.log(CITY_DATA)
+        var myCity = CITY_DATA[city]
+        // console.log(cityPath)
+        
+        d3.csv(myCity).then((data) => {
+          // ==================================
+          // ==================================
+          // --- FREQUENT TIMES OF TRAVEL: ---
+
+          // if (filter === 'Day' || filter === 'Both') {
+
+
+          // }
+          // ==================================
+          // MOST COMMON MONTHS (TRACE 1)
+          var month_names = ["Jan", "Feb", "Mar", "Apr", "May", "June"]
+          var months = data.map(x => new Date(x['Start Time']).getMonth())
+          var month_counts = []
+          // var jan_count = months.filter(x => x === 0).length
+          for (var i=0;i<=5;i++) {
+            var month_count = months.filter(x => x === i).length
+            month_counts.push(month_count)
+          };
+          var trace1 = {
+            x : month_names,
+            y : month_counts,
+            // text : month_counts,
+            text : month_counts.map(x => 'Trip Count : ' + x),
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layout1 = {
+            title : {text: '<b>Trip Count per Month</b>'},
+            xaxis : { title : {text: 'Month'} },
+            yaxis : { title : {text: 'Number of Trips'} }
+            };
+          var data1 = [trace1];
+          Plotly.newPlot('bar_month', data1, layout1);
+          // console.log(month_counts)
+
+          // ==================================
+          // MOST COMMON DAYS (TRACE 2)
+          var weekday = new Array(7);
+          weekday[0] = "Sunday";
+          weekday[1] = "Monday";
+          weekday[2] = "Tuesday";
+          weekday[3] = "Wednesday";
+          weekday[4] = "Thursday";
+          weekday[5] = "Friday";
+          weekday[6] = "Saturday";
+
+          var day_counts = []
+          var days = data.map(x => weekday[new Date(x['Start Time']).getDay()])
+          for (var i=0;i<=weekday.length;i++) {
+            var day_count = days.filter(x => x===weekday[i]).length
+            day_counts.push(day_count)
+          };
+          var trace2 = {
+            x : weekday,
+            y : day_counts,
+            text: day_counts.map(x => 'Trip Count : ' + x),
+            // text : day_counts,
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layout2 = {
+            title : {text: '<b>Trip Count per Day of the Week</b>'},
+            xaxis : { title : {text: 'Day of the Week'} },
+            yaxis : { title : {text: 'Number of Trips'} }
+            };
+          var data2 = [trace2];
+          Plotly.newPlot('bar_day', data2, layout2);
+          // var sun = days.filter(x => x===weekday[2]).length
+          // console.log(sun)
+          // console.log(days)
+          
+          // ==================================
+          // MOST COMMON HOURS (TRACE 3)
+          var hours = data.map(x => new Date(x['Start Time']).getHours())
+          var uniqueHours = []
+          var hour_counts = []
+          // console.log(hours)
+          for (var i=0;i<=24;i++) {
+            var hour_count = hours.filter(x => x===i).length
+            uniqueHours.push(i)
+            hour_counts.push(hour_count)
+          };
+          // console.log(hour_counts)
+
+          var amPM = ['12am']
+          for (var i=1;i<=24;i++) {
+            if (i < 12) {
+              var hour_am = i.toString() + 'am'
+              amPM.push(hour_am)
+            }
+            else if (i == 12) {
+              var hour_pm = '12pm'
+              amPM.push(hour_pm)
+            }
+            else if (i>12) {
+              var hour_pm = (i-12).toString() + 'pm'
+              amPM.push(hour_pm)
+            }
+          };
+          var trace3 = {
+            x : uniqueHours,
+            y : hour_counts,
+            text : hour_counts.map(x => 'Trip Count : ' + x),
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layout3 = {
+            title : {text: '<b>Trip Count per Hour of the Day</b>'},
+            xaxis : {
+              title : {text : 'Hour of the Day'},
+              tickvals : uniqueHours,
+              ticktext : amPM
+            },
+            yaxis : { title : {text: 'Number of Trips'} }
+            };
+          var data3 = [trace3];
+          Plotly.newPlot('bar_hour', data3, layout3);
+
+          // ==================================
+          // ==================================
+          // --- POPULAR STATIONS: ---
+          // ==================================
+          // MOST COMMON START STATIONS (TRACE 4)
+          var startStations = data.map(x => x['Start Station']);
+
+          // var uniqueStart = [...new Set(startStations)];
+          var startCounts = {};
+          for (var i = 0; i < startStations.length; i++) {
+            startCounts[startStations[i]] = 1 + (startCounts[startStations[i]] || 0);
+          };
+          // console.log(startCounts)
+          var topStartStations = Object.keys(startCounts).map(function(key) {
+            return [key, startCounts[key]];
+              });
+          
+          topStartStations.sort(function(first, second) {
+            return second[1] - first[1];
+            });
+          var top10Start = topStartStations.slice(0,10);
+
+          var top10StartNames = [];
+          var top10StartCounts = [];
+          for (var i=0; i<top10Start.length; i++) {
+            top10StartNames.push(top10Start[i][0]);
+            top10StartCounts.push(top10Start[i][1]);
+          };
+          var trace4 = {
+            x : top10StartNames,
+            y : top10StartCounts,
+            text : top10StartCounts.map(x => 'Trip Count : ' + x),
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layout4 = {
+            title : {text: '<b>Top 10 Start Stations</b>'},
+            xaxis : {
+              title : {text : 'Start Station'},
+              tickfont : { size : 8},
+              tickangle: 30,
+              // tickvals : uniqueHours,
+              // ticktext : amPM
+            },
+            yaxis : { title : {text: 'Number of Trips'} }
+            };
+          var data4 = [trace4];
+          Plotly.newPlot('bar_startStation', data4, layout4);
+          // console.log(top10StartNames)
+          // console.log(top10StartCounts)
+          
+          // ==================================
+          // MOST COMMON END STATIONS (TRACE 5)
+          var endStations = data.map(x => x['End Station']);
+
+          // var uniqueStart = [...new Set(startStations)];
+          var endCounts = {};
+          for (var i = 0; i < endStations.length; i++) {
+            endCounts[endStations[i]] = 1 + (endCounts[endStations[i]] || 0);
+          };
+          // console.log(startCounts)
+          var topEndStations = Object.keys(endCounts).map(function(key) {
+            return [key, endCounts[key]];
+              });
+          
+          topEndStations.sort(function(first, second) {
+            return second[1] - first[1];
+            });
+          var top10End = topEndStations.slice(0,10);
+
+          var top10EndNames = [];
+          var top10EndCounts = [];
+          for (var i=0; i<top10End.length; i++) {
+            top10EndNames.push(top10End[i][0]);
+            top10EndCounts.push(top10End[i][1]);
+          };
+          var trace5 = {
+            x : top10EndNames,
+            y : top10EndCounts,
+            text : top10EndCounts.map(x => 'Trip Count : ' + x),
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layout5 = {
+            title : {text: '<b>Top 10 End Stations</b>'},
+            xaxis : {
+              title : {text : 'End Station'},
+              tickfont : { size : 8},
+              tickangle: 30,
+              // tickvals : uniqueHours,
+              // ticktext : amPM
+            },
+            yaxis : { title : {text: 'Number of Trips'} }
+            };
+          var data5 = [trace5];
+          Plotly.newPlot('bar_endStation', data5, layout5);
+
+          // ==================================
+          // MOST COMMON START & END STATIONS (TRACE 6)
+          var startEnd = [];
+          for (var i=0; i<startStations.length; i++) {
+            startEnd.push([startStations[i],endStations[i]])
+          };
+          // console.log(startEnd)
+          var startEndCounts = {};
+          for (var i = 0; i < startEnd.length; i++) {
+            startEndCounts[startEnd[i]] = 1 + (startEndCounts[startEnd[i]] || 0);
+          };
+          // console.log(startEndCounts)
+          var topStartEndStations = Object.keys(startEndCounts).map(function(key) {
+            return [key, startEndCounts[key]];
+              });
+          
+          topStartEndStations.sort(function(first, second) {
+            return second[1] - first[1];
+            });
+          var top10StartEnd = topStartEndStations.slice(0,10);
+
+          var top10StartEndNames = [];
+          var top10StartEndCounts = [];
+          for (var i=0; i<top10StartEnd.length; i++) {
+            top10StartEndNames.push(top10StartEnd[i][0]);
+            top10StartEndCounts.push(top10StartEnd[i][1]);
+          };
+          // console.log(top10StartEndNames)
+          // console.log(top10StartEndCounts)
+
+          // xAxisLabels = [];
+          // top10StartEndNames.forEach((d) => {
+          //   var splitted = d.split(',')
+          //   var splitStr = splitted[0]+'\n'+splitted[1]
+          //   xAxisLabels.push(splitStr)
+          // });
+          var xAxisLabels = [];
+          top10StartEndNames.forEach((d) => {
+            var splitted = d.split(',')
+            xAxisLabels.push(splitted[0]+',')
+            xAxisLabels.push(splitted[1])
+          });
+          var trace6 = {
+            x : top10StartEndNames,
+            y : top10StartEndCounts,
+            text : top10StartEndCounts.map(x => 'Trip Count : ' + x),
+            hovertemplate: "%{text}<br>Station : %{x}",
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layout6 = {
+            title : {text: '<b>Top 10 Start-End Stations</b>'},
+            xaxis : {
+              title : {text : 'Start and End Station'},
+              showticklabels:false
+            },
+            yaxis : { title : {text: 'Number of Trips'} }
+            // showlegend: true
+            }
+          var data6 = [trace6];
+          Plotly.newPlot('bar_startEndStation', data6, layout6);
+
+          // ===========================
+          // TRIP DURATION
+          var tripTotal = +(d3.select('#tripSum').text().slice(17,35).trim())
+          var tripAverage = +(d3.select('#tripSum').text().slice(101,160).trim())
+
+          // var traceTripTot = {
+          //   x : tripTotal,
+          //   y : ['Total Trip Duration'],
+          //   text : tripTotal.map(x=> x + 'seconds'),
+          //   type : 'bar'
+          // }
+          // var layoutTripTot = {
+          //   title : {text: '<b>Total Trip Duration</b>'},
+          //   xaxis : { title : {text: 'Trip Duration (seconds)'} },
+          //   // yaxis : { title : {text: 'Number of Trips'} }
+          //   };
+          // ==================================
+          // USER TYPES:
+          var subs = +(d3.select('#userTypes').text().slice(14,25).trim())
+          var custs = +(d3.select('#userTypes').text().slice(55,).trim())
+          var userTypes = ['Subscriber','Customer']
+          var userCounts = [subs, custs]
+          var traceUser = {
+            x : userTypes,
+            y : userCounts,
+            // text : month_counts,
+            text : userCounts.map(x => 'User Count : ' + x),
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layoutUser = {
+            title : {text: '<b>User Counts</b>'},
+            xaxis : { title : {text: 'User Type'} },
+            yaxis : { title : {text: 'Number of Users'} }
+            };
+          var dataUser = [traceUser];
+          Plotly.newPlot('bar_userTypes', dataUser, layoutUser);
+
+          // ==================================
+          // ONLY FOR CHICAGO AND NYC:
+          // GENDERS:
+          var male = +(d3.select('#genders').text().slice(7,20).trim())
+          var female = +(d3.select('#genders').text().slice(44,).trim())
+          var genderTypes = ['Male','Female']
+          var genderCounts = [male,female]
+
+          var traceGender = {
+            x : genderTypes,
+            y : genderCounts,
+            // text : month_counts,
+            text : genderCounts.map(x => 'Gender Count : ' + x),
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layoutGender = {
+            title : {text: '<b>Gender Counts</b>'},
+            xaxis : { title : {text: 'Gender'} },
+            yaxis : { title : {text: 'Number of Users'} }
+            };
+          var dataGender = [traceGender];
+          Plotly.newPlot('bar_gender', dataGender, layoutGender);
+
+          //==========================
+          // COMMON BIRTH YEARS
+          var birthYears = data.map(x => x['Birth Year']);
+
+          // var uniqueStart = [...new Set(startStations)];
+          var birthCounts = {};
+          for (var i = 0; i < birthYears.length; i++) {
+            birthCounts[birthYears[i]] = 1 + (birthCounts[birthYears[i]] || 0);
+          };
+          // console.log(startCounts)
+          var topBirthYears = Object.keys(birthCounts).map(function(key) {
+            return [key, birthCounts[key]];
+              });
+          
+          topBirthYears.sort(function(first, second) {
+            return second[1] - first[1];
+            });
+          var top10Birth = topBirthYears.slice(0,10);
+
+          var top10BirthNames = [];
+          var top10BirthCounts = [];
+          for (var i=0; i<top10Start.length; i++) {
+            top10BirthNames.push(top10Birth[i][0]);
+            top10BirthCounts.push(top10Birth[i][1]);
+          };
+
+          var traceG = {
+            x : top10BirthNames,
+            y : top10BirthCounts,
+            text : top10BirthCounts.map(x => 'User Count : ' + x),
+            type : 'bar',
+            transforms: [{
+                type: 'sort',
+                target: 'y',
+                order: 'descending'
+            }]
+          };
+          var layoutG = {
+            title : {text: '<b>Top 10 Birth Years</b>'},
+            xaxis : {title : {text : 'Birth Year'} },
+            yaxis : { title : {text: 'Number of Users'} }
+            };
+          var dataG = [traceG];
+          Plotly.newPlot('bar_birth', dataG, layoutG);
+
+        }); //Ends d3.csv()
+
+
+      
+
+  </script>
+</body>
+
+</html>
