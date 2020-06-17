@@ -1,0 +1,1 @@
+web: gunicorn bikeshare_app.app:app
