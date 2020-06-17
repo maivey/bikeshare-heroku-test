@@ -29,7 +29,7 @@ def load_data(city, month, day):
     CITY_DATA = { 'chicago': 'https://raw.githubusercontent.com/maivey/bikeshare-heroku-test/master/bikeshare_app/data/chicago.csv',
               'new york city': 'https://raw.githubusercontent.com/maivey/bikeshare-heroku-test/master/bikeshare_app/data/new_york_city.csv',
               'washington': 'https://raw.githubusercontent.com/maivey/bikeshare-heroku-test/master/bikeshare_app/data/washington.csv' }
-    df = pd.read_csv(url,sep=",")
+    df = pd.read_csv(CITY_DATA[city.lower()],sep=",")
     # df = pd.read_csv(CITY_DATA[city.lower()])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
