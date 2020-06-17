@@ -4,7 +4,7 @@ from flask import request
 from flask import jsonify
 from flask import send_from_directory
 import os.path
-from bikeshare_flask import load_data, filtered_choice, time_stats_day, time_stats_month, time_stats_hour, most_common, station_stats, trip_duration_stats, user_stats
+from bikeshare_flask.py import load_data, filtered_choice, time_stats_day, time_stats_month, time_stats_hour, most_common, station_stats, trip_duration_stats, user_stats
 import pandas as pd
 import time
 import pandas as pd
