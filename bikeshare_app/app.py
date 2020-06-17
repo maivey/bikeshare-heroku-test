@@ -23,10 +23,14 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    CITY_DATA = { 'chicago': '/data/chicago.csv',
-              'new york city': '/data/new_york_city.csv',
-              'washington': '/data/washington.csv' }
-    df = pd.read_csv(CITY_DATA[city.lower()])
+    # CITY_DATA = { 'chicago': '/data/chicago.csv',
+    #           'new york city': '/data/new_york_city.csv',
+    #           'washington': '/data/washington.csv' }
+    CITY_DATA = { 'chicago': 'https://raw.githubusercontent.com/maivey/bikeshare-heroku-test/master/bikeshare_app/data/chicago.csv',
+              'new york city': 'https://raw.githubusercontent.com/maivey/bikeshare-heroku-test/master/bikeshare_app/data/new_york_city.csv',
+              'washington': 'https://raw.githubusercontent.com/maivey/bikeshare-heroku-test/master/bikeshare_app/data/washington.csv' }
+    df = pd.read_csv(url,sep=",")
+    # df = pd.read_csv(CITY_DATA[city.lower()])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
     # Capitilize month and day in order to use dt.month_name() and dt.day_name() functions
