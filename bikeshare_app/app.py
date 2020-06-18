@@ -12,6 +12,8 @@ import numpy as np
 import datetime
 import json
 
+# =================================
+# FUNCTIONS FROM BIKESHARE_FLASK.PY
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
@@ -261,8 +263,13 @@ def user_stats(df, city):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+# =================================
+# ENDS FUNCTIONS FROM BIKESHARE_FLASK.PY
+# =================================
+
 
 app = Flask(__name__)
+
 @app.route("/", methods=['GET', 'POST'])
 def main():
     if request.method == 'GET':

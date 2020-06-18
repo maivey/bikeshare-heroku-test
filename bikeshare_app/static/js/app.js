@@ -6,14 +6,64 @@ var day = d3.select('#mainDay').text().slice(11,30).trim();
 // console.log(city)
 // console.log(month)
 // console.log(day)
-var CITY_DATA = { 'chicago': '/outputData/chicago_filtered.csv',
-'new york city': '/outputData/nyc_filtered.csv',
-'washington': '/outputData/washington_filtered.csv' }
+// var CITY_DATA = { 'chicago': '/outputData/chicago_filtered.csv',
+// 'new york city': '/outputData/nyc_filtered.csv',
+// 'washington': '/outputData/washington_filtered.csv' }
+
+var CITY_DATA = { 'chicago': '/data/chicago.csv',
+    'new york city': '/data/new_york_city.csv',
+    'washington': '/data/washington.csv' }
 // console.log(CITY_DATA)
 var myCity = CITY_DATA[city];
 // console.log(cityPath)
 
 d3.csv(myCity).then((data) => {
+    if (day !== 'all') {
+        // data = data.filter(x => new Date(x['Start Time']).getMonth() === month)
+        if (day === 'sunday') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 0)
+        }
+        else if (day === 'monday') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 1)
+        }
+        else if (day === 'tuesday') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 2)
+        }
+        else if (day === 'wednesday') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 3)
+        }
+        else if (day === 'thursday') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 4)
+        }
+        else if (day === 'friday') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 5)
+        }
+        else if (day === 'saturday') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 6)
+
+        }
+      } // End if (day !== 'all') 
+      if (month !== 'all') {
+        if (month === 'january') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 0)
+        }
+        else if (day === 'febuary') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 1)
+        }
+        else if (day === 'march') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 2)
+        }
+        else if (day === 'april') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 3)
+        }
+        else if (day === 'may') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 4)
+        }
+        else if (day === 'june') {
+            data = data.filter(x => new Date(x['Start Time']).getDay() === 5)
+        }
+
+      }
     // ==================================
     // ==================================
     // --- FREQUENT TIMES OF TRAVEL: ---
