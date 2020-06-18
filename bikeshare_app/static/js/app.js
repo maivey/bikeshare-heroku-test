@@ -42,7 +42,7 @@ d3.csv(myCity).then((data) => {
             data = data.filter(x => new Date(x['Start Time']).getDay() === 6)
         }
       }; // End if (day !== 'all') 
-      if (month !== 'all') {
+    if (month !== 'all') {
         if (month === 'january') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 0)
         }
@@ -118,6 +118,7 @@ d3.csv(myCity).then((data) => {
             var day_count = days.filter(x => x===weekday[i]).length
             day_counts.push(day_count)
         };
+        console.log(weekday)
         console.log(day_counts)
         var trace2 = {
             x : weekday,

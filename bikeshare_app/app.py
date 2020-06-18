@@ -662,12 +662,12 @@ def main():
             print(day)
 
             df = load_data(city, month, day)
-            if city == 'chicago':
-                df.to_csv('outputData/chicago_filtered.csv')
-            elif city == 'new york city':
-                df.to_csv('outputData/nyc_filtered.csv')
-            elif city == 'washington':
-                df.to_csv('outputData/washington_filtered.csv')
+            # if city == 'chicago':
+            #     df.to_csv('outputData/chicago_filtered.csv')
+            # elif city == 'new york city':
+            #     df.to_csv('outputData/nyc_filtered.csv')
+            # elif city == 'washington':
+            #     df.to_csv('outputData/washington_filtered.csv')
             filtered = filtered_choice(df)
             print(filtered)
             common_start, freq_start, common_end, freq_end, combo_names, combo_count = station_stats(df)
@@ -976,13 +976,13 @@ def data(filename):
   # Send a file download response.
   return send_from_directory(Data_folder, filename)
 
-outputData_folder = os.path.join(app.root_path, 'outputData')
-print(app.root_path)
-@app.route('/outputData/<path:filename>')
-def OutputData(filename):
-  # Add custom handling here.
-  # Send a file download response.
-  return send_from_directory(outputData_folder, filename)
+# outputData_folder = os.path.join(app.root_path, 'outputData')
+# print(app.root_path)
+# @app.route('/outputData/<path:filename>')
+# def OutputData(filename):
+#   # Add custom handling here.
+#   # Send a file download response.
+#   return send_from_directory(outputData_folder, filename)
 
 
 if __name__ == "__main__":
