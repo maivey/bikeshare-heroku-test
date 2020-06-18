@@ -154,6 +154,7 @@ select {
     background-attachment: fixed;
     /*background-position: bottom center;*/
     background-position: top center;
+    background-repeat: no-repeat;
     background-size: contain;
     /*background-size: cover;*/
   }
@@ -211,6 +212,7 @@ select {
     /*background-position: bottom center;*/
     background-position: top center;
     /*background-size: cover;*/
+    background-repeat: no-repeat;
     background-size: contain;
   }
 
