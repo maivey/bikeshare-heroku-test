@@ -150,13 +150,13 @@ select {
     padding: 20px;
     margin: 0;
     /* background: black; */
-    background-image: url("../images/bikeshare.jpg");
+    /*background-image: url("../images/bikeshare.jpg");*/
     background-attachment: fixed;
     /*background-position: bottom center;*/
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: contain;
-    /*background-size: cover;*/
+    /*background-size: contain;*/
+    background-size: cover;
   }
 }
 
@@ -207,13 +207,13 @@ select {
     padding: 20px;
     margin: 0;
     /* background: black; */
-    background-image: url("../images/bikeshare.jpg");
+    /*background-image: url("../images/bikeshare.jpg");*/
     background-attachment: fixed;
     /*background-position: bottom center;*/
     background-position: top center;
-    /*background-size: cover;*/
+    background-size: cover;
     background-repeat: no-repeat;
-    background-size: contain;
+    /*background-size: contain;*/
   }
 
   .hero h1 {
