@@ -40,9 +40,8 @@ d3.csv(myCity).then((data) => {
         }
         else if (day === 'saturday') {
             data = data.filter(x => new Date(x['Start Time']).getDay() === 6)
-
         }
-      } // End if (day !== 'all') 
+      }; // End if (day !== 'all') 
       if (month !== 'all') {
         if (month === 'january') {
             data = data.filter(x => new Date(x['Start Time']).getDay() === 0)
@@ -63,7 +62,8 @@ d3.csv(myCity).then((data) => {
             data = data.filter(x => new Date(x['Start Time']).getDay() === 5)
         }
 
-      }
+      };
+      console.log(data)
     // ==================================
     // ==================================
     // --- FREQUENT TIMES OF TRAVEL: ---
