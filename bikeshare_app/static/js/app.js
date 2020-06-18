@@ -282,7 +282,7 @@ d3.csv(myCity).then((data) => {
 
     // var uniqueStart = [...new Set(startStations)];
     var startCounts = {};
-    for (var i = 0; i < startStations.length; i++) {
+    for (var i = 0; i <= startStations.length; i++) {
     startCounts[startStations[i]] = 1 + (startCounts[startStations[i]] || 0);
     };
     // console.log(startCounts)
@@ -297,7 +297,7 @@ d3.csv(myCity).then((data) => {
 
     var top10StartNames = [];
     var top10StartCounts = [];
-    for (var i=0; i<top10Start.length; i++) {
+    for (var i=0; i<=top10Start.length; i++) {
     top10StartNames.push(top10Start[i][0]);
     top10StartCounts.push(top10Start[i][1]);
     };
@@ -335,7 +335,7 @@ d3.csv(myCity).then((data) => {
 
     // var uniqueStart = [...new Set(startStations)];
     var endCounts = {};
-    for (var i = 0; i < endStations.length; i++) {
+    for (var i = 0; i <= endStations.length; i++) {
     endCounts[endStations[i]] = 1 + (endCounts[endStations[i]] || 0);
     };
     // console.log(startCounts)
@@ -350,7 +350,7 @@ d3.csv(myCity).then((data) => {
 
     var top10EndNames = [];
     var top10EndCounts = [];
-    for (var i=0; i<top10End.length; i++) {
+    for (var i=0; i<=top10End.length; i++) {
     top10EndNames.push(top10End[i][0]);
     top10EndCounts.push(top10End[i][1]);
     };
@@ -383,12 +383,12 @@ d3.csv(myCity).then((data) => {
     // ==================================
     // MOST COMMON START & END STATIONS (TRACE 6)
     var startEnd = [];
-    for (var i=0; i<startStations.length; i++) {
+    for (var i=0; i<=startStations.length; i++) {
     startEnd.push([startStations[i],endStations[i]])
     };
     // console.log(startEnd)
     var startEndCounts = {};
-    for (var i = 0; i < startEnd.length; i++) {
+    for (var i = 0; i <= startEnd.length; i++) {
     startEndCounts[startEnd[i]] = 1 + (startEndCounts[startEnd[i]] || 0);
     };
     // console.log(startEndCounts)
@@ -407,15 +407,7 @@ d3.csv(myCity).then((data) => {
     top10StartEndNames.push(top10StartEnd[i][0]);
     top10StartEndCounts.push(top10StartEnd[i][1]);
     };
-    // console.log(top10StartEndNames)
-    // console.log(top10StartEndCounts)
-
-    // xAxisLabels = [];
-    // top10StartEndNames.forEach((d) => {
-    //   var splitted = d.split(',')
-    //   var splitStr = splitted[0]+'\n'+splitted[1]
-    //   xAxisLabels.push(splitStr)
-    // });
+ 
     var xAxisLabels = [];
     top10StartEndNames.forEach((d) => {
     var splitted = d.split(',')
@@ -536,7 +528,7 @@ d3.csv(myCity).then((data) => {
         console.log(topBirthYears)
 
         var top10Birth = topBirthYears.slice(0,10);
-        
+
         console.log(top10Birth)
 
         var top10BirthNames = [];

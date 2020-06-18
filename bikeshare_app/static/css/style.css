@@ -185,6 +185,17 @@ select {
     text-align: center;
     content: attr(data-th);
   }
+  .hero {
+    position: relative;
+    height: 100px;
+    padding: 20px;
+    margin: 0;
+    /* background: black; */
+    background-image: url("../images/bikeshare.jpg");
+    background-attachment: fixed;
+    background-position: bottom center;
+    background-size: cover;
+  }
 
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
