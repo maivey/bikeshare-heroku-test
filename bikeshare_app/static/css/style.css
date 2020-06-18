@@ -145,7 +145,8 @@ select {
   }
   .hero {
     position: relative;
-    height: 400px;
+    /*height: 400px;*/
+    height: 50%;
     padding: 20px;
     margin: 0;
     /* background: black; */
@@ -198,7 +199,8 @@ select {
   }
   .hero {
     position: relative;
-    height: 400px;
+    /*height: 400px;*/
+    height: 50%;
     padding: 20px;
     margin: 0;
     /* background: black; */
@@ -231,7 +233,7 @@ select {
   }
 
   to {
-    font-size: 7.5rem;
+    font-size: 8.5rem;
     /*font-size: 5.5rem;*/
     opacity: 1;
   }
