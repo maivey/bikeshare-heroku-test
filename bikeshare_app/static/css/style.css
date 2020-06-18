@@ -158,6 +158,9 @@ select {
     background-size: contain;
     /*background-size: cover;*/
   }
+  #myHeader {
+    height:400px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -218,6 +221,10 @@ select {
 
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
+  }
+  
+  #myHeader {
+    height:400px;
   }
 }
 
