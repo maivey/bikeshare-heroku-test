@@ -99,7 +99,8 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Trips'} }
             };
         var data1 = [trace1];
-        Plotly.newPlot('bar_month', data1, layout1);
+        var config = {responsive: true};
+        Plotly.newPlot('bar_month', data1, layout1, config);
         // console.log(month_counts)
     }  //Ends if filter=day or none
     else if (filter === 'Month') {
@@ -140,7 +141,8 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Trips'} }
             };
         var data2 = [trace2];
-        Plotly.newPlot('bar_day', data2, layout2);
+        var config = {responsive: true};
+        Plotly.newPlot('bar_day', data2, layout2, config);
         // var sun = days.filter(x => x===weekday[2]).length
         // console.log(sun)
         // console.log(days)
@@ -174,7 +176,8 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Trips'} }
             };
         var data1 = [trace1];
-        Plotly.newPlot('bar_month', data1, layout1);
+        var config = {responsive: true};
+        Plotly.newPlot('bar_month', data1, layout1, config);
         // ==================================
         // MOST COMMON DAYS (TRACE 2)
         var weekday = new Array(7);
@@ -211,7 +214,8 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Trips'} }
             };
         var data2 = [trace2];
-        Plotly.newPlot('bar_day', data2, layout2);
+        var config = {responsive: true};
+        Plotly.newPlot('bar_day', data2, layout2, config);
     }; // Ends if filter=none
 
 
@@ -266,7 +270,8 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     };
     var data3 = [trace3];
-    Plotly.newPlot('bar_hour', data3, layout3);
+    var config = {responsive: true};
+    Plotly.newPlot('bar_hour', data3, layout3, config);
 
     // ==================================
     // ==================================
@@ -319,7 +324,8 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     };
     var data4 = [trace4];
-    Plotly.newPlot('bar_startStation', data4, layout4);
+    var config = {responsive: true};
+    Plotly.newPlot('bar_startStation', data4, layout4, config);
     // console.log(top10StartNames)
     // console.log(top10StartCounts)
     
@@ -371,7 +377,8 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     };
     var data5 = [trace5];
-    Plotly.newPlot('bar_endStation', data5, layout5);
+    var config = {responsive: true};
+    Plotly.newPlot('bar_endStation', data5, layout5, config);
 
     // ==================================
     // MOST COMMON START & END STATIONS (TRACE 6)
@@ -436,7 +443,8 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     }
     var data6 = [trace6];
-    Plotly.newPlot('bar_startEndStation', data6, layout6);
+    var config = {responsive: true};
+    Plotly.newPlot('bar_startEndStation', data6, layout6, config);
 
     // ===========================
     // TRIP DURATION
@@ -471,7 +479,8 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Users'} }
     };
     var dataUser = [traceUser];
-    Plotly.newPlot('bar_userTypes', dataUser, layoutUser);
+    var config = {responsive: true};
+    Plotly.newPlot('bar_userTypes', dataUser, layoutUser, config);
 
     // ==================================
     // ONLY FOR CHICAGO AND NYC:
@@ -503,7 +512,8 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Users'} }
             };
         var dataGender = [traceGender];
-        Plotly.newPlot('bar_gender', dataGender, layoutGender);
+        var config = {responsive: true};
+        Plotly.newPlot('bar_gender', dataGender, layoutGender, config);
 
         //==========================
         // COMMON BIRTH YEARS
@@ -548,7 +558,8 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Users'} }
             };
         var dataG = [traceG];
-        Plotly.newPlot('bar_birth', dataG, layoutG);
+        var config = {responsive: true};
+        Plotly.newPlot('bar_birth', dataG, layoutG, config);
     }; //Ends if city=chicago or nyc
     
 
