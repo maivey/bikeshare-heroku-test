@@ -46,19 +46,19 @@ d3.csv(myCity).then((data) => {
         if (month === 'january') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 0)
         }
-        else if (day === 'febuary') {
+        else if (month === 'febuary') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 1)
         }
-        else if (day === 'march') {
+        else if (month === 'march') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 2)
         }
-        else if (day === 'april') {
+        else if (month === 'april') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 3)
         }
-        else if (day === 'may') {
+        else if (month === 'may') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 4)
         }
-        else if (day === 'june') {
+        else if (month === 'june') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 5)
         }
 
