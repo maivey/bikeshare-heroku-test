@@ -42,11 +42,13 @@ d3.csv(myCity).then((data) => {
             data = data.filter(x => new Date(x['Start Time']).getDay() === 6)
         }
       }; // End if (day !== 'all') 
+    console.log(month !== 'all') 
     if (month !== 'all') {
+        console.log(month === 'april') 
         if (month === 'january') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 0)
         }
-        else if (month === 'febuary') {
+        else if (month === 'february') {
             data = data.filter(x => new Date(x['Start Time']).getMonth() === 1)
         }
         else if (month === 'march') {
