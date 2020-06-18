@@ -528,18 +528,25 @@ d3.csv(myCity).then((data) => {
         var topBirthYears = Object.keys(birthCounts).map(function(key) {
             return [key, birthCounts[key]];
             });
+        console.log(topBirthYears)
         
         topBirthYears.sort(function(first, second) {
             return second[1] - first[1];
             });
+        console.log(topBirthYears)
+
         var top10Birth = topBirthYears.slice(0,10);
+        
+        console.log(top10Birth)
 
         var top10BirthNames = [];
         var top10BirthCounts = [];
-        for (var i=0; i<top10Start.length; i++) {
+        for (var i=0; i<=top10BirthNames.length; i++) {
             top10BirthNames.push(top10Birth[i][0]);
             top10BirthCounts.push(top10Birth[i][1]);
         };
+        console.log(top10BirthNames)
+        console.log(top10BirthCounts)
 
         var traceG = {
             x : top10BirthNames,
