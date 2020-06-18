@@ -44,22 +44,22 @@ d3.csv(myCity).then((data) => {
       }; // End if (day !== 'all') 
       if (month !== 'all') {
         if (month === 'january') {
-            data = data.filter(x => new Date(x['Start Time']).getDay() === 0)
+            data = data.filter(x => new Date(x['Start Time']).getMonth() === 0)
         }
         else if (day === 'febuary') {
-            data = data.filter(x => new Date(x['Start Time']).getDay() === 1)
+            data = data.filter(x => new Date(x['Start Time']).getMonth() === 1)
         }
         else if (day === 'march') {
-            data = data.filter(x => new Date(x['Start Time']).getDay() === 2)
+            data = data.filter(x => new Date(x['Start Time']).getMonth() === 2)
         }
         else if (day === 'april') {
-            data = data.filter(x => new Date(x['Start Time']).getDay() === 3)
+            data = data.filter(x => new Date(x['Start Time']).getMonth() === 3)
         }
         else if (day === 'may') {
-            data = data.filter(x => new Date(x['Start Time']).getDay() === 4)
+            data = data.filter(x => new Date(x['Start Time']).getMonth() === 4)
         }
         else if (day === 'june') {
-            data = data.filter(x => new Date(x['Start Time']).getDay() === 5)
+            data = data.filter(x => new Date(x['Start Time']).getMonth() === 5)
         }
 
       };
