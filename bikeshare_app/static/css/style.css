@@ -145,7 +145,7 @@ select {
   }
   .hero {
     position: relative;
-    /*height: 400px;*/
+    height: 200px;
     /*height: 50%;*/
     padding: 20px;
     margin: 0;
@@ -159,7 +159,7 @@ select {
     /*background-size: cover;*/
   }
   #myHeader {
-    height:400px;
+    height:200px;
   }
 }
 
@@ -205,7 +205,7 @@ select {
   }
   .hero {
     position: relative;
-    /*height: 400px;*/
+    height: 200px;
     /*height: 50%;*/
     padding: 20px;
     margin: 0;
@@ -222,9 +222,9 @@ select {
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
   }
-  
+
   #myHeader {
-    height:400px;
+    height:200px;
   }
 }
 
