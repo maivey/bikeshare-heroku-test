@@ -160,9 +160,9 @@ select {
   }
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
-    margin-top: 10px;
+    margin-top: 30px;
   }
-  
+
   #myHeader {
     height:200px;
   }
@@ -226,7 +226,7 @@ select {
 
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
-    margin-top: 10px;
+    margin-top: 30px;
   }
 
   #myHeader {
