@@ -72,16 +72,16 @@ select {
   color: #8e979f;
   outline: none;
 }
-
+/* 
 #table-area th {
   text-align: center;
-}
+} */
 
-#table-area th:first-child,
+/* #table-area th:first-child,
 #table-area th:nth-child(2),
 #table-area th:nth-child(6) {
   min-width: 70px;
-}
+} */
 
 .loader {
   margin-top: 50px;
@@ -143,9 +143,9 @@ select {
 
 /* media queries which will only be activated at specific screen sizes */
 @media (max-width: 800px) {
-  #table-area td {
+  /* #table-area td {
     font-size: 1em;
-  }
+  } */
   .hero {
     position: relative;
     height: 200px;
@@ -163,54 +163,14 @@ select {
   }
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
-    margin-top: 30px;
+    /* font-size: 0.2rem; */
+    margin-top: 20px;
   }
 
-  #myHeader {
-    height:200px;
-  }
 }
 
 @media (max-width: 500px) {
-  #table-area thead {
-    display: none;
-  }
 
-  #table-area tr td:first-child {
-    font-size: 1.8em;
-    font-weight: bold;
-    background: #1b3146;
-  }
-
-  #table-area tr td:last-child {
-    margin-bottom: 20px;
-  }
-
-  #table-area tr td:last-child::after {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin-top: 20px;
-    content: " ";
-    background: aliceblue;
-  }
-
-  #table-area td {
-    font-size: 1.25em;
-  }
-
-  #table-area tbody td {
-    display: block;
-    text-align: center;
-  }
-
-  #table-area tbody td::before {
-    display: block;
-    font-size: 1.4em;
-    font-weight: bold;
-    text-align: center;
-    content: attr(data-th);
-  }
   .hero {
     position: relative;
     height: 200px;
@@ -229,7 +189,7 @@ select {
 
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   #myHeader {
@@ -255,11 +215,24 @@ select {
   }
 
   to {
-    font-size: 16.5rem;
-    /*font-size: 5.5rem;*/
+    font-size : 4.5rem;
+    /* font-size: 16.5rem; */
+    /* font-size: 0.5rem; */
     opacity: 1;
   }
 }
+/* @keyframes medium-title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    /* font-size: .1rem; */
+    /* font-size: 7.5rem; */
+    /*font-size: 5.5rem;*/
+    /* opacity: 1; */
+  /* } */
+/* }  */
 
 @keyframes subtitle {
   from {
