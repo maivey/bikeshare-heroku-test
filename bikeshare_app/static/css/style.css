@@ -142,33 +142,26 @@ select {
 }
 
 /* media queries which will only be activated at specific screen sizes */
-@media (max-width: 800px) {
-  /* #table-area td {
-    font-size: 1em;
-  } */
+/* @media (max-width: 800px) {
+
   .hero {
     position: relative;
     height: 200px;
-    /*height: 50%;*/
     padding: 20px;
     margin: 0;
-    /* background: black; */
     background-image: url("../images/bikeshare.jpg");
     background-attachment: fixed;
-    /*background-position: bottom center;*/
     background-position: top center;
     background-repeat: no-repeat;
     background-size: contain;
-    /*background-size: cover;*/
   }
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
     font-size: 0.1rem;
-    /* font-size: 0.2rem; */
     margin-top: 20px;
   }
 
-}
+} */
 
 @media (max-width: 500px) {
 
@@ -190,8 +183,8 @@ select {
 
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
-    font-size: 0.1rem;
-    margin-top: 20px;
+    /* font-size: 0.1rem;
+    margin-top: 20px; */
   }
 
   #myHeader {
@@ -217,7 +210,7 @@ select {
   }
 
   to {
-    font-size : 4.5rem;
+    font-size : 5.5rem;
     /* font-size: 16.5rem; */
     /* font-size: 0.5rem; */
     opacity: 1;
