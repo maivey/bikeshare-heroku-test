@@ -324,8 +324,9 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     };
     var data4 = [trace4];
-    var config = {responsive: true};
-    Plotly.newPlot('bar_startStation', data4, layout4, config);
+    // var config = {responsive: true};
+    // Plotly.newPlot('bar_startStation', data4, layout4, config);
+    Plotly.newPlot('bar_startStation', data4, layout4);
     // console.log(top10StartNames)
     // console.log(top10StartCounts)
     
@@ -377,8 +378,9 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     };
     var data5 = [trace5];
-    var config = {responsive: true};
-    Plotly.newPlot('bar_endStation', data5, layout5, config);
+    // var config = {responsive: true};
+    // Plotly.newPlot('bar_endStation', data5, layout5, config);
+    Plotly.newPlot('bar_endStation', data5, layout5);
 
     // ==================================
     // MOST COMMON START & END STATIONS (TRACE 6)
@@ -435,8 +437,10 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     }
     var data6 = [trace6];
-    var config = {responsive: true};
-    Plotly.newPlot('bar_startEndStation', data6, layout6, config);
+    // var config = {responsive: true};
+    // Plotly.newPlot('bar_startEndStation', data6, layout6, config);
+    Plotly.newPlot('bar_startEndStation', data6, layout6);
+
 
     // ===========================
     // TRIP DURATION
@@ -471,8 +475,10 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Users'} }
     };
     var dataUser = [traceUser];
-    var config = {responsive: true};
+    // var config = {responsive: true};
+    // Plotly.newPlot('bar_userTypes', dataUser, layoutUser, config);
     Plotly.newPlot('bar_userTypes', dataUser, layoutUser, config);
+
 
     // ==================================
     // ONLY FOR CHICAGO AND NYC:
@@ -505,7 +511,9 @@ d3.csv(myCity).then((data) => {
             };
         var dataGender = [traceGender];
         var config = {responsive: true};
-        Plotly.newPlot('bar_gender', dataGender, layoutGender, config);
+        // Plotly.newPlot('bar_gender', dataGender, layoutGender, config);
+        Plotly.newPlot('bar_gender', dataGender, layoutGender);
+
 
         //==========================
         // COMMON BIRTH YEARS
@@ -557,8 +565,10 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Users'} }
             };
         var dataG = [traceG];
-        var config = {responsive: true};
-        Plotly.newPlot('bar_birth', dataG, layoutG, config);
+        // var config = {responsive: true};
+        // Plotly.newPlot('bar_birth', dataG, layoutG, config);
+        Plotly.newPlot('bar_birth', dataG, layoutG);
+
     }; //Ends if city=chicago or nyc
     
 
