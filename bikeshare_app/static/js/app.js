@@ -99,7 +99,7 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Trips'} }
             };
         var data1 = [trace1];
-        var config = {responsive: true};
+        var config = {responsive: true}
         Plotly.newPlot('bar_month', data1, layout1, config);
         // console.log(month_counts)
     }  //Ends if filter=day or none
@@ -141,7 +141,7 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Trips'} }
             };
         var data2 = [trace2];
-        var config = {responsive: true};
+        var config = {responsive: true}
         Plotly.newPlot('bar_day', data2, layout2, config);
         // var sun = days.filter(x => x===weekday[2]).length
         // console.log(sun)
@@ -214,7 +214,7 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Trips'} }
             };
         var data2 = [trace2];
-        var config = {responsive: true};
+        var config = {responsive: true}
         Plotly.newPlot('bar_day', data2, layout2, config);
     }; // Ends if filter=none
 
@@ -270,7 +270,7 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     };
     var data3 = [trace3];
-    var config = {responsive: true};
+    var config = {responsive: true}
     Plotly.newPlot('bar_hour', data3, layout3, config);
 
     // ==================================
@@ -283,23 +283,24 @@ d3.csv(myCity).then((data) => {
     // var uniqueStart = [...new Set(startStations)];
     var startCounts = {};
     for (var i = 0; i <= startStations.length; i++) {
-    startCounts[startStations[i]] = 1 + (startCounts[startStations[i]] || 0);
+        startCounts[startStations[i]] = 1 + (startCounts[startStations[i]] || 0);
     };
     // console.log(startCounts)
     var topStartStations = Object.keys(startCounts).map(function(key) {
-    return [key, startCounts[key]];
-        });
+        return [key, startCounts[key]];
+    });
     
     topStartStations.sort(function(first, second) {
-    return second[1] - first[1];
+        return second[1] - first[1];
     });
+
     var top10Start = topStartStations.slice(0,10);
 
     var top10StartNames = [];
     var top10StartCounts = [];
     for (var i=0; i<=top10Start.length; i++) {
-    top10StartNames.push(top10Start[i][0]);
-    top10StartCounts.push(top10Start[i][1]);
+        top10StartNames.push(top10Start[i][0]);
+        top10StartCounts.push(top10Start[i][1]);
     };
     var trace4 = {
     x : top10StartNames,
@@ -324,9 +325,9 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     };
     var data4 = [trace4];
-    // var config = {responsive: true};
-    // Plotly.newPlot('bar_startStation', data4, layout4, config);
-    Plotly.newPlot('bar_startStation', data4, layout4);
+    var config = {responsive: true}
+    Plotly.newPlot('bar_startStation', data4, layout4, config);
+    // Plotly.newPlot('bar_startStation', data4, layout4);
     // console.log(top10StartNames)
     // console.log(top10StartCounts)
     
@@ -378,9 +379,9 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     };
     var data5 = [trace5];
-    // var config = {responsive: true};
-    // Plotly.newPlot('bar_endStation', data5, layout5, config);
-    Plotly.newPlot('bar_endStation', data5, layout5);
+    var config = {responsive: true}
+    Plotly.newPlot('bar_endStation', data5, layout5, config);
+    // Plotly.newPlot('bar_endStation', data5, layout5);
 
     // ==================================
     // MOST COMMON START & END STATIONS (TRACE 6)
@@ -437,9 +438,9 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Trips'} }
     }
     var data6 = [trace6];
-    // var config = {responsive: true};
-    // Plotly.newPlot('bar_startEndStation', data6, layout6, config);
-    Plotly.newPlot('bar_startEndStation', data6, layout6);
+    var config = {responsive: true}
+    Plotly.newPlot('bar_startEndStation', data6, layout6, config);
+    // Plotly.newPlot('bar_startEndStation', data6, layout6);
 
 
     // ===========================
@@ -475,9 +476,9 @@ d3.csv(myCity).then((data) => {
     yaxis : { title : {text: 'Number of Users'} }
     };
     var dataUser = [traceUser];
-    // var config = {responsive: true};
-    // Plotly.newPlot('bar_userTypes', dataUser, layoutUser, config);
+    var config = {responsive: true}
     Plotly.newPlot('bar_userTypes', dataUser, layoutUser, config);
+    // Plotly.newPlot('bar_userTypes', dataUser, layoutUser, config);
 
 
     // ==================================
@@ -510,9 +511,9 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Users'} }
             };
         var dataGender = [traceGender];
-        var config = {responsive: true};
-        // Plotly.newPlot('bar_gender', dataGender, layoutGender, config);
-        Plotly.newPlot('bar_gender', dataGender, layoutGender);
+        var config = {responsive: true}
+        Plotly.newPlot('bar_gender', dataGender, layoutGender, config);
+        // Plotly.newPlot('bar_gender', dataGender, layoutGender);
 
 
         //==========================
@@ -565,9 +566,9 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Users'} }
             };
         var dataG = [traceG];
-        // var config = {responsive: true};
-        // Plotly.newPlot('bar_birth', dataG, layoutG, config);
-        Plotly.newPlot('bar_birth', dataG, layoutG);
+        var config = {responsive: true}
+        Plotly.newPlot('bar_birth', dataG, layoutG, config);
+        // Plotly.newPlot('bar_birth', dataG, layoutG);
 
     }; //Ends if city=chicago or nyc
     
