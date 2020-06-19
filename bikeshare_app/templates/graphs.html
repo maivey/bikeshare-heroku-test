@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
-  <style>
+  <!-- <style>
     .result_paragraph p {
       font-size:18pt;
     }
     
-  </style>
+  </style> -->
 </head>
 
 <body>
@@ -95,6 +95,7 @@
         </div>
  
         <!-- Statistics -->
+        <div class='row'>
         <div class="col-md-12 result_paragraph container">
           <!-- <div class="col-md-12">
             <div id="bar"></div>
@@ -141,7 +142,7 @@
                 <br>Count : {{ hour_count }}
                 </p>
                 <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_hour"></div>
                     </div>
               <br>
@@ -150,20 +151,20 @@
                 <p>Most commonly used Start Station : {{ common_start }}
                   <br>Count : {{ freq_start }}
                 </p>
-                <div style = 'padding-bottom:20px' class="col-md-12">
+                <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                   <div id="bar_startStation"></div>
                 </div>
                 <p>Most commonly used End Station : {{ common_end }}
                   <br>Count : {{ freq_end }}
                 </p>
-                <div style = 'padding-bottom:20px' class="col-md-12">
+                <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                   <div id="bar_endStation"></div>
                 </div>
                 <p>Most frequent combination of start and end station : {{ combo_names }}
                   <br>Count : {{ combo_count }}
                 </p>
                 <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startEndStation"></div>
                     </div>
                 <!-- Trip Duration -->
@@ -182,7 +183,7 @@
               <p id='userTypes'>{{ subs }} : {{ sub_count }}
                 <br>{{ users }} : {{ user_count }}
               </p>
-              <div style = 'padding-bottom:20px' class="col-md-12">
+              <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                 <div id="bar_userTypes"></div>
               </div>
               <!-- Gender -->
@@ -191,7 +192,7 @@
               <p id ="genders">{{ m }} : {{ m_count }}
                 <br>{{ f }} : {{ f_count }}
               </p>
-              <div style = 'padding-bottom:20px' class="col-md-12">
+              <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                 <div id="bar_gender"></div>
               </div>
               <!-- Birth Year -->
@@ -206,7 +207,7 @@
                 <br> Most common birth year : {{ common }}
                 <br> Count : {{ freq }}
               </p>
-              <div style = 'padding-bottom:20px' class="col-md-12">
+              <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                 <div id="bar_birth"></div>
               </div>
 
@@ -218,7 +219,7 @@
                   <p>Most common day : {{ most_common_day }} 
                   <br>Count : {{ day_count }}
                   </p>
-                  <div style = 'padding-bottom:20px' class="col-md-12">
+                  <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                     <div id="bar_day"></div>
                   </div>
                   <br>
@@ -226,7 +227,7 @@
                     <br>Count : {{ hour_count }}
                   </p>
                   <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_hour"></div>
                     </div>
                   <br>
@@ -235,20 +236,20 @@
                 <p>Most commonly used Start Station : {{common_start}}
                   <br>Count : {{freq_start}}
                 </p>
-                <div style = 'padding-bottom:20px' class="col-md-12">
+                <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                   <div id="bar_startStation"></div>
                 </div>
                 <p>Most commonly used End Station : {{common_end}}
                   <br>Count : {{freq_end}}
                 </p>
-                <div style = 'padding-bottom:20px' class="col-md-12">
+                <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                   <div id="bar_endStation"></div>
                 </div>
                 <p>Most frequent combination of start and end station : {{combo_names}}
                   <br>Count : {{combo_count}}
                 </p>
                 <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startEndStation"></div>
                     </div>
                 <br>
@@ -266,7 +267,7 @@
               <p id='userTypes'>{{ subs }} : {{ sub_count }}
                 <br>{{ users }} : {{ user_count }}
               </p>
-              <div style = 'padding-bottom:20px' class="col-md-12">
+              <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                 <div id="bar_userTypes"></div>
               </div>
               <!-- Gender -->
@@ -275,7 +276,7 @@
               <p id ="genders">{{ m }} : {{ m_count }}
                 <br>{{ f }} : {{ f_count }}
               </p>
-              <div style = 'padding-bottom:20px' class="col-md-12">
+              <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                 <div id="bar_gender"></div>
               </div>
               <!-- Birth Year -->
@@ -290,7 +291,7 @@
                 <br> Most common birth year : {{ common }}
                 <br> Count : {{ freq }}
               </p>
-              <div style = 'padding-bottom:20px' class="col-md-12">
+              <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                 <div id="bar_birth"></div>
               </div>
               
@@ -301,7 +302,7 @@
                   <p>Most common month : {{ most_common_month }}
                   <br>Count : {{ month_count }}
                   </p>
-                  <div style = 'padding-bottom:20px'class="col-md-12">
+                  <div style = 'padding-bottom:20px'class="col-md-12 col-sm-12">
                     <div id="bar_month"></div>
                   </div>
                   <br>
@@ -309,7 +310,7 @@
                     <br>Count : {{ hour_count }} 
                   </p>
                   <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_hour"></div>
                     </div>
                   <br>
@@ -318,20 +319,20 @@
                     <p>Most commonly used Start Station : {{ common_start }}
                       <br>Count : {{ freq_start }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startStation"></div>
                     </div>
                     <p>Most commonly used End Station : {{ common_end }}
                       <br>Count : {{ freq_end }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_endStation"></div>
                     </div>
                     <p>Most frequent combination of start and end station : {{ combo_names }}
                       <br> Count : {{ combo_count }}
                     </p>
                     <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startEndStation"></div>
                     </div>
                     <br>
@@ -349,7 +350,7 @@
               <p id='userTypes'>{{ subs }} : {{ sub_count }}
                 <br>{{ users }} : {{ user_count }}
               </p>
-              <div style = 'padding-bottom:20px' class="col-md-12">
+              <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                 <div id="bar_userTypes"></div>
               </div>
                 <!-- Gender -->
@@ -358,7 +359,7 @@
                 <p id ="genders">{{ m }} : {{ m_count }}
                   <br>{{ f }} : {{ f_count }}
                 </p>
-                <div style = 'padding-bottom:20px' class="col-md-12">
+                <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                   <div id="bar_gender"></div>
                 </div>
                 <!-- Birth Year -->
@@ -373,7 +374,7 @@
                   <br> Most common birth year : {{ common }}
                   <br> Count : {{ freq }}
                 </p>
-                <div style = 'padding-bottom:20px' class="col-md-12">
+                <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                   <div id="bar_birth"></div>
                 </div>
               {% elif myFilter == 'None' %}
@@ -383,7 +384,7 @@
                     <p>Most common month : {{ most_common_month }} 
                     <br>Count : {{ month_count }}
                     </p>
-                    <div style = 'padding-bottom:20px'class="col-md-12">
+                    <div style = 'padding-bottom:20px'class="col-md-12 col-sm-12">
                       <div id="bar_month"></div>
                     </div>
                     <br>
@@ -392,7 +393,7 @@
                     <p>Most common day : {{ most_common_day }}
                       <br>Count : {{ day_count }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_day"></div>
                     </div>
                     <br>
@@ -400,7 +401,7 @@
                       <br>Count : {{ hour_count }}
                     </p>
                     <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_hour"></div>
                     </div>
                     <br>
@@ -409,20 +410,20 @@
                     <p>Most commonly used Start Station : {{ common_start }}
                       <br>Count : {{ freq_start }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startStation"></div>
                     </div>
                     <p>Most commonly used End Station : {{ common_end }}
                       <br>Count : {{ freq_end }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_endStation"></div>
                     </div>
                     <p>Most frequent combination of start and end station : {{ combo_names }}
                       <br>Count : {{ combo_count }}
                     </p>
                     <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startEndStation"></div>
                     </div>
                   <!-- Trip Duration -->
@@ -432,7 +433,7 @@
                       <br>Avg Duration : {{ average_trip_duration }}
                     </p>
                     <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_tripTotal"></div>
                     </div>
                 <h3 class='text-info'> User Statistics...</h3>
@@ -442,7 +443,7 @@
                     <p id='userTypes'>{{ subs }} : {{ sub_count }}
                       <br>{{ users }} : {{ user_count }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_userTypes"></div>
                     </div>
                     
@@ -452,7 +453,7 @@
                     <p id ="genders">{{ m }} : {{ m_count }}
                       <br>{{ f }} : {{ f_count }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_gender"></div>
                     </div>
                     <!-- Birth Year -->
@@ -467,7 +468,7 @@
                       <br> Most common birth year : {{ common }}
                       <br> Count : {{ freq }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_birth"></div>
                     </div>
                     </p>
@@ -487,7 +488,7 @@
                     <br>Count : {{ hour_count }}
                     </p>
                     <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_hour"></div>
                     </div>
                   <br>
@@ -496,20 +497,20 @@
                     <p>Most commonly used Start Station : {{ common_start }}
                       <br>Count : {{ freq_start }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startStation"></div>
                     </div>
                     <p>Most commonly used End Station : {{ common_end }}
                       <br>Count : {{ freq_end }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_endStation"></div>
                     </div>
                     <p>Most frequent combination of start and end station : {{ combo_names }}
                       <br>Count : {{ combo_count }}
                     </p>
                     <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startEndStation"></div>
                     </div>
                     <!-- Trip Duration -->
@@ -527,7 +528,7 @@
                   <p id='userTypes'>{{ subs }} : {{ sub_count }}
                     <br>{{ users }} : {{ user_count }}
                   </p>
-                  <div style = 'padding-bottom:20px' class="col-md-12">
+                  <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                     <div id="bar_userTypes"></div>
                   </div>
 
@@ -539,7 +540,7 @@
                       <p>Most common day : {{ most_common_day }} 
                       <br>Count : {{ day_count }}
                       </p>
-                      <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                         <div id="bar_day"></div>
                       </div>
                       <br>
@@ -547,7 +548,7 @@
                         <br>Count : {{ hour_count }}
                       </p>
                       <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_hour"></div>
                     </div>
                       <br>
@@ -556,20 +557,20 @@
                     <p>Most commonly used Start Station : {{common_start}}
                       <br>Count : {{freq_start}}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startStation"></div>
                     </div>
                     <p>Most commonly used End Station : {{common_end}}
                       <br>Count : {{freq_end}}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_endStation"></div>
                     </div>
                     <p>Most frequent combination of start and end station : {{combo_names}}
                       <br>Count : {{combo_count}}
                     </p>
                     <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startEndStation"></div>
                     </div>
                     <br>
@@ -586,7 +587,7 @@
                     <p id='userTypes'>{{ subs }} : {{ sub_count }}
                       <br>{{ users }} : {{ user_count }}
                     </p>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_userTypes"></div>
                     </div>
                   
@@ -597,7 +598,7 @@
                       <p>Most common month : {{ most_common_month }}
                       <br>Count : {{ month_count }}
                       </p>
-                      <div style = 'padding-bottom:20px'class="col-md-12">
+                      <div style = 'padding-bottom:20px'class="col-md-12 col-sm-12">
                         <div id="bar_month"></div>
                       </div>
                       <br>
@@ -605,7 +606,7 @@
                         <br>Count : {{ hour_count }} 
                       </p>
                       <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_hour"></div>
                     </div>
                       <br>
@@ -614,20 +615,20 @@
                         <p>Most commonly used Start Station : {{ common_start }}
                           <br>Count : {{ freq_start }}
                         </p>
-                        <div style = 'padding-bottom:20px' class="col-md-12">
+                        <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                           <div id="bar_startStation"></div>
                         </div>
                         <p>Most commonly used End Station : {{ common_end }}
                           <br>Count : {{ freq_end }}
                         </p>
-                        <div style = 'padding-bottom:20px' class="col-md-12">
+                        <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                           <div id="bar_endStation"></div>
                         </div>
                         <p>Most frequent combination of start and end station : {{ combo_names }}
                           <br> Count : {{ combo_count }}
                         </p>
                         <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startEndStation"></div>
                     </div>
                         <br>
@@ -645,7 +646,7 @@
                       <p id='userTypes'>{{ subs }} : {{ sub_count }}
                         <br>{{ users }} : {{ user_count }}
                       </p>
-                      <div style = 'padding-bottom:20px' class="col-md-12">
+                      <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                         <div id="bar_userTypes"></div>
                       </div>
                   {% elif myFilter == 'None' %}
@@ -655,14 +656,14 @@
                         <p>Most common month : {{ most_common_month }} 
                         <br>Count : {{ month_count }}
                         </p>
-                        <div style = 'padding-bottom:20px'class="col-md-12">
+                        <div style = 'padding-bottom:20px'class="col-md-12 col-sm-12">
                           <div id="bar_month"></div>
                         </div>
                         <br>
                         <p>Most common day : {{ most_common_day }}
                           <br>Count : {{ day_count }}
                         </p>
-                        <div style = 'padding-bottom:20px' class="col-md-12">
+                        <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                           <div id="bar_day"></div>
                         </div>
                         <br>
@@ -670,7 +671,7 @@
                           <br>Count : {{ hour_count }}
                         </p>
                         <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_hour"></div>
                     </div>
                         <br>
@@ -679,20 +680,20 @@
                         <p>Most commonly used Start Station : {{ common_start }}
                           <br>Count : {{ freq_start }}
                         </p>
-                        <div style = 'padding-bottom:20px' class="col-md-12">
+                        <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                           <div id="bar_startStation"></div>
                         </div>
                         <p>Most commonly used End Station : {{ common_end }}
                           <br>Count : {{ freq_end }}
                         </p>
-                        <div style = 'padding-bottom:20px' class="col-md-12">
+                        <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                           <div id="bar_endStation"></div>
                         </div>
                         <p>Most frequent combination of start and end station : {{ combo_names }}
                           <br>Count : {{ combo_count }}
                         </p>
                         <br>
-                    <div style = 'padding-bottom:20px' class="col-md-12">
+                    <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                       <div id="bar_startEndStation"></div>
                     </div>
                         <br>
@@ -710,7 +711,7 @@
                         <p id='userTypes'>{{ subs }} : {{ sub_count }}
                           <br>{{ users }} : {{ user_count }}
                         </p>
-                        <div style = 'padding-bottom:20px' class="col-md-12">
+                        <div style = 'padding-bottom:20px' class="col-md-12 col-sm-12">
                           <div id="bar_userTypes"></div>
                         </div>
 
@@ -722,9 +723,8 @@
 
 
           </div>
-
-
         </div><!-- Ends Statistics -->
+      </div><!-- Ends div class=row -->
 
       </div>
     <footer class="footer">

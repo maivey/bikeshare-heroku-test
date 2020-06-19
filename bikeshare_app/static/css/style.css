@@ -137,6 +137,9 @@ select {
   /* Firefox 18- */
   color: #8e979f;
 }
+.result_paragraph p {
+  font-size:18pt;
+}
 
 /* media queries which will only be activated at specific screen sizes */
 @media (max-width: 800px) {
