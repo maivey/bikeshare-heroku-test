@@ -562,12 +562,7 @@ d3.csv(myCity).then((data) => {
             x : top10BirthNames,
             y : top10BirthCounts,
             text : top10BirthCounts.map(x => 'User Count : ' + x),
-            type : 'bar',
-            transforms: [{
-                type: 'sort',
-                target: 'y',
-                order: 'descending'
-            }]
+            type : 'bar'
         };
         var layoutG = {
             title : {text: '<b>Top 10 Birth Years</b>'},
