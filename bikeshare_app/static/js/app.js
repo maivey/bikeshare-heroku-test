@@ -551,7 +551,7 @@ d3.csv(myCity).then((data) => {
 
         var top10BirthNames = [];
         var top10BirthCounts = [];
-        for (var i=0; i< top10BirthNames.length; i++) {
+        for (var i=0; i< top10Birth.length; i++) {
             top10BirthNames.push(top10Birth[i][0]);
             top10BirthCounts.push(top10Birth[i][1]);
         };
