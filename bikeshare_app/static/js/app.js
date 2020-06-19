@@ -176,7 +176,7 @@ d3.csv(myCity).then((data) => {
             yaxis : { title : {text: 'Number of Trips'} }
             };
         var data1 = [trace1];
-        var config = {responsive: true};
+        var config = {responsive: true}
         Plotly.newPlot('bar_month', data1, layout1, config);
         // ==================================
         // MOST COMMON DAYS (TRACE 2)
