@@ -189,8 +189,8 @@ d3.csv(myCity).then((data) => {
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
 
-        var day_counts = []
-        var days = data.map(x => weekday[new Date(x['Start Time']).getDay()])
+        var day_counts = [];
+        var days = data.map(x => weekday[new Date(x['Start Time']).getDay()]);
         for (var i=0;i<=weekday.length;i++) {
             var day_count = days.filter(x => x===weekday[i]).length
             day_counts.push(day_count)
@@ -288,7 +288,7 @@ d3.csv(myCity).then((data) => {
         startCounts[startStations[i]] = 1 + (startCounts[startStations[i]] || 0);
     };
     console.log(startCounts)
-    
+
     var topStartStations = Object.keys(startCounts).map(function(key) {
         return [key, startCounts[key]];
     });
@@ -545,7 +545,7 @@ d3.csv(myCity).then((data) => {
             });
         console.log(topBirthYears)
 
-        var top10Birth = topBirthYears.slice(0,10);
+        var top10Birth = topBirthYears.slice(1,11);
 
         console.log(top10Birth)
 
