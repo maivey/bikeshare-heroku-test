@@ -573,7 +573,7 @@ d3.csv(myCity).then((data) => {
             title : {text: '<b>Top 10 Birth Years</b>'},
             xaxis : {
                 title : {text : 'Birth Year'},
-                tickvals : [0,1,2,3,4,5,6,7,8,9],
+                // tickvals : [0,1,2,3,4,5,6,7,8,9],
                 ticktext : top10BirthNames
             },
             yaxis : { title : {text: 'Number of Users'} }
