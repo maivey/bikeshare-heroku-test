@@ -279,22 +279,27 @@ d3.csv(myCity).then((data) => {
     // ==================================
     // MOST COMMON START STATIONS (TRACE 4)
     var startStations = data.map(x => x['Start Station']);
+    console.log(startStations)
+
 
     // var uniqueStart = [...new Set(startStations)];
     var startCounts = {};
-    for (var i = 0; i <= startStations.length; i++) {
+    for (var i = 0; i < startStations.length; i++) {
         startCounts[startStations[i]] = 1 + (startCounts[startStations[i]] || 0);
     };
-    // console.log(startCounts)
+    console.log(startCounts)
     var topStartStations = Object.keys(startCounts).map(function(key) {
         return [key, startCounts[key]];
     });
+    console.log(topStartStations)
     
     topStartStations.sort(function(first, second) {
         return second[1] - first[1];
     });
+    console.log(topStartStations)
 
     var top10Start = topStartStations.slice(0,10);
+    console.log(top10Start)
 
     var top10StartNames = [];
     var top10StartCounts = [];
@@ -302,6 +307,9 @@ d3.csv(myCity).then((data) => {
         top10StartNames.push(top10Start[i][0]);
         top10StartCounts.push(top10Start[i][1]);
     };
+    console.log(top10StartNames)
+    console.log(top10StartCounts)
+
     var trace4 = {
     x : top10StartNames,
     y : top10StartCounts,
@@ -318,7 +326,7 @@ d3.csv(myCity).then((data) => {
     xaxis : {
         title : {text : 'Start Station'},
         tickfont : { size : 8},
-        tickangle: 30,
+        tickangle: 30
         // tickvals : uniqueHours,
         // ticktext : amPM
     },
@@ -352,7 +360,7 @@ d3.csv(myCity).then((data) => {
 
     var top10EndNames = [];
     var top10EndCounts = [];
-    for (var i=0; i<=top10End.length; i++) {
+    for (var i=0; i< top10End.length; i++) {
     top10EndNames.push(top10End[i][0]);
     top10EndCounts.push(top10End[i][1]);
     };
@@ -372,7 +380,7 @@ d3.csv(myCity).then((data) => {
     xaxis : {
         title : {text : 'End Station'},
         tickfont : { size : 8},
-        tickangle: 30,
+        tickangle: 30
         // tickvals : uniqueHours,
         // ticktext : amPM
     },
