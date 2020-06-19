@@ -298,7 +298,7 @@ d3.csv(myCity).then((data) => {
 
     var top10StartNames = [];
     var top10StartCounts = [];
-    for (var i=0; i<=top10Start.length; i++) {
+    for (var i=0; i<top10Start.length; i++) {
         top10StartNames.push(top10Start[i][0]);
         top10StartCounts.push(top10Start[i][1]);
     };
@@ -337,7 +337,7 @@ d3.csv(myCity).then((data) => {
 
     // var uniqueStart = [...new Set(startStations)];
     var endCounts = {};
-    for (var i = 0; i <= endStations.length; i++) {
+    for (var i = 0; i < endStations.length; i++) {
     endCounts[endStations[i]] = 1 + (endCounts[endStations[i]] || 0);
     };
     // console.log(startCounts)
@@ -386,12 +386,12 @@ d3.csv(myCity).then((data) => {
     // ==================================
     // MOST COMMON START & END STATIONS (TRACE 6)
     var startEnd = [];
-    for (var i=0; i<=startStations.length; i++) {
+    for (var i=0; i<startStations.length; i++) {
     startEnd.push([startStations[i],endStations[i]])
     };
     // console.log(startEnd)
     var startEndCounts = {};
-    for (var i = 0; i <= startEnd.length; i++) {
+    for (var i = 0; i < startEnd.length; i++) {
     startEndCounts[startEnd[i]] = 1 + (startEndCounts[startEnd[i]] || 0);
     };
     // console.log(startEndCounts)
@@ -445,8 +445,8 @@ d3.csv(myCity).then((data) => {
 
     // ===========================
     // TRIP DURATION
-    var tripTotal = +(d3.select('#tripSum').text().slice(17,35).trim())
-    var tripAverage = +(d3.select('#tripSum').text().slice(101,160).trim())
+    // var tripTotal = +(d3.select('#tripSum').text().slice(17,35).trim())
+    // var tripAverage = +(d3.select('#tripSum').text().slice(101,160).trim())
 
 
     // ==================================
@@ -542,7 +542,7 @@ d3.csv(myCity).then((data) => {
 
         var top10BirthNames = [];
         var top10BirthCounts = [];
-        for (var i=0; i<=top10BirthNames.length; i++) {
+        for (var i=0; i< top10BirthNames.length; i++) {
             top10BirthNames.push(top10Birth[i][0]);
             top10BirthCounts.push(top10Birth[i][1]);
         };
