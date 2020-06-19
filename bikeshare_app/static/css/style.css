@@ -72,16 +72,6 @@ select {
   color: #8e979f;
   outline: none;
 }
-/* 
-#table-area th {
-  text-align: center;
-} */
-
-/* #table-area th:first-child,
-#table-area th:nth-child(2),
-#table-area th:nth-child(6) {
-  min-width: 70px;
-} */
 
 .loader {
   margin-top: 50px;
@@ -183,6 +173,7 @@ select {
 
   .hero h1 {
     animation: smaller-title 1.2s forwards linear;
+    margin-top:20px;
     /* font-size: 0.1rem;
     margin-top: 20px; */
   }
