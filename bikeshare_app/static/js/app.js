@@ -288,6 +288,7 @@ d3.csv(myCity).then((data) => {
         startCounts[startStations[i]] = 1 + (startCounts[startStations[i]] || 0);
     };
     console.log(startCounts)
+    
     var topStartStations = Object.keys(startCounts).map(function(key) {
         return [key, startCounts[key]];
     });
